@@ -8,66 +8,71 @@ namespace Labb6
         {
             Stack<Employee> myStack = new Stack<Employee>();
             AddEmployees(myStack);
+            PrintInfo(myStack);
+            PopEmployees(myStack);
+            AddEmployees(myStack);
+            PeekEmployees(myStack);
 
-            foreach(var employee in myStack)
+            List<Employee> myList = new List<Employee>();
+            AddEmployees(myList);
+        }
+        public static void AddEmployees(Stack<Employee> myStack)
+        {
+            myStack.Push(new Employee { Id = Guid.NewGuid(), Name = "Sven Svensson", Gender = "Male", Salary = 52000});
+            myStack.Push(new Employee { Id = Guid.NewGuid(), Name = "Petter Andersson", Gender = "Male", Salary = 46000 });
+            myStack.Push(new Employee { Id = Guid.NewGuid(), Name = "Johan Karlsson", Gender = "Male", Salary = 51000 });
+            myStack.Push(new Employee { Id = Guid.NewGuid(), Name = "Frida Johansson", Gender = "Female", Salary = 72000 });
+            myStack.Push(new Employee { Id = Guid.NewGuid(), Name = "Alexandra Pettersson", Gender = "Female", Salary = 44000 });
+        }
+        public static void PeekEmployees(Stack<Employee> myStack)
+        {
+            Console.WriteLine("");
+            Console.WriteLine("Retrieve Using Peek Method");
+            for (int i = 0; i < 2; i++)
             {
+                Employee employee = myStack.Peek();
                 Console.WriteLine($"{employee.Id} {employee.Name} {employee.Gender} {employee.Salary}");
-                Console.WriteLine("Items left in the Stack: " + myStack.Count);
+                Console.WriteLine($"Objects left in the stack: {myStack.Count}");
+                CheckExistence(myStack);
             }
-
+        }
+        public static void PopEmployees(Stack<Employee> myStack)
+        {
             Console.WriteLine("");
             Console.WriteLine("Retrieve Using Pop Method");
-            while(myStack.Count > 0)
+            while (myStack.Count > 0)
             {
                 Employee employee = myStack.Pop();
                 Console.WriteLine($"{employee.Id} {employee.Name} {employee.Gender} {employee.Salary}");
                 Console.WriteLine($"Objects left in the stack: {myStack.Count}");
             }
-
-          
-
-            Console.WriteLine("");
-            Console.WriteLine("Retrieve Using Peek Method");
-
-            var first = myStack.Peek();
-            var temp = myStack.Pop();
-            var second = myStack.Peek();
-            myStack.Push(temp);
-            Console.WriteLine($"{first.Id} {first.Name} {first.Gender} {first.Salary}");
-            Console.WriteLine("Objects left in the stack: " + myStack.Count);
-            Console.WriteLine($"{second.Id} {second.Name} {second.Gender} {second.Salary}");
-            Console.WriteLine("Objects left in the stack: " + myStack.Count);
-            
-            if(myStack.Contains(employee3))
-            {
-                Console.WriteLine("Employee number 3 is in the stack");
-            }
-            else
-            {
-                Console.WriteLine("Employee number 3 is gone");
-            }
-
-
-            List<Employee> myList = new List<Employee>();
-            myList.Add(employee1);
-            myList.Add(employee2);
-            myList.Add(employee3);
-            myList.Add(employee4);
-            myList.Add(employee5);
-
-            if(myList.Contains(employee2))
-            {
-                Console.WriteLine("Employee2 object exists in the list");
-            }
-            else
-            {
-                Console.WriteLine("Employee2 object does not exist in the list");
-            }
-            
         }
-        public static void AddEmployees( Stack myStack)
+        public static void PrintInfo(Stack<Employee> myStack)
         {
-            myStack.Push(new Employee { Id = Guid.NewGuid(), Name = "Sven Svensson", Gender = "Male", Salary = 52000});
+            foreach (var employee in myStack)
+            {
+                Console.WriteLine($"{employee.Id} {employee.Name} {employee.Gender} {employee.Salary}");
+                Console.WriteLine("Items left in the Stack: " + myStack.Count);
+            }
+        }
+        public static void CheckExistence(Stack<Employee> myStack)
+        {
+            if (myStack.Count >= 3)
+            {
+                Console.WriteLine("Object number 3 is in the stack");
+            }
+            else
+            {
+                Console.WriteLine("Object number 3 is not in the stack");
+            }
+        }
+        public static void AddEmployees(List<Employee> myList)
+        {
+            myList.Add(new Employee { Id = Guid.NewGuid(), Name = "Sven Svensson", Gender = "Male", Salary = 52000 });
+            myList.Add(new Employee { Id = Guid.NewGuid(), Name = "Petter Andersson", Gender = "Male", Salary = 46000 });
+            myList.Add(new Employee { Id = Guid.NewGuid(), Name = "Johan Karlsson", Gender = "Male", Salary = 51000 });
+            myList.Add(new Employee { Id = Guid.NewGuid(), Name = "Frida Johansson", Gender = "Female", Salary = 72000 });
+            myList.Add(new Employee { Id = Guid.NewGuid(), Name = "Alexandra Pettersson", Gender = "Female", Salary = 44000 });
         }
     }
 }
