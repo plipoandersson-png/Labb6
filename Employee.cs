@@ -13,8 +13,6 @@ namespace Labb6
         public string Name { get; set; }
         public string Gender { get; set; }
         public int Salary { get; set; }
-
-        
     }
 
     
