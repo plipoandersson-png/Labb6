@@ -21,7 +21,7 @@ namespace Labb6
             List<Employee> maleEmployees = myList.FindAll(e => e.Gender == "Male");
             foreach(Employee employee in maleEmployees)
             {
-                Console.WriteLine(employee.Name);
+                Console.WriteLine($"{employee.Id} {employee.Name} {employee.Gender} {employee.Salary}");
             }
 
 
