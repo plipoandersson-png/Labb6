@@ -19,6 +19,7 @@ namespace Labb6
             Employee maleEmployee = myList.Find(e => e.Gender == "Male");
             Console.WriteLine($"{maleEmployee.Id} {maleEmployee.Name} {maleEmployee.Gender} {maleEmployee.Salary}");
             List<Employee> maleEmployees = myList.FindAll(e => e.Gender == "Male");
+            Console.WriteLine("Finding all male employees:");
             foreach(Employee employee in maleEmployees)
             {
                 Console.WriteLine($"{employee.Id} {employee.Name} {employee.Gender} {employee.Salary}");
